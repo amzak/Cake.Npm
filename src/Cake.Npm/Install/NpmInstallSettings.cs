@@ -44,6 +44,11 @@
         public bool NoOptional { get; set; }
 
         /// <summary>
+        /// disable progress output during install
+        /// </summary>
+        public bool NoProgress { get; set; }
+
+        /// <summary>
         /// Gets the list of packages which should be installed.
         /// </summary>
         public IList<string> Packages => _packages;
@@ -84,6 +89,11 @@
             if (NoOptional)
             {
                 args.Append("--no-optional");
+            }
+
+            if (NoProgress)
+            {
+                args.Append("--no-progress"); 
             }
 
             if (Registry != null)
